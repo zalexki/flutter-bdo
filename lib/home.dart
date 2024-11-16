@@ -1,29 +1,9 @@
+import 'dart:async';
 import 'dart:math';
 import 'dart:developer';
 
+import 'package:bdotimers/Components/TimerCard.dart';
 import 'package:flutter/material.dart';
-
-
-//   Timer _timer;
-//   int _start = 10;
-
-// void startTimer() {
-//   const oneSec = const Duration(seconds: 1);
-//   _timer = new Timer.periodic(
-//     oneSec,
-//     (Timer timer) {
-//       if (_start == 0) {
-//         setState(() {
-//           timer.cancel();
-//         });
-//       } else {
-//         setState(() {
-//           _start--;
-//         });
-//       }
-//     },
-//   );
-// }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -41,35 +21,25 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
-
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   List<Card> dynamicList = [];
-  
-  var protoCard = Card(
-    color: Colors.amber,
-    child: Padding(
-      padding: const EdgeInsets.all(20),
-      child: Text('chrono 1 ${dynamicList.length}')
-    )
-  );
 
   void onAddTimerClick()
   {
-    print("onAddTimerClick pressed");
+    var protoCard = const Card(
+        color: Colors.amber,
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: Column(
+            children: [
+              TimerCard()
+            ],
+          )
+        )
+      );
+
     setState(() {
       dynamicList.add(protoCard);
-    });
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
     });
   }
 
@@ -96,22 +66,17 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       appBar: AppBar(
         backgroundColor: theme.colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: dynamicList
+          Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: dynamicList
+            ),
           ),
-          // FloatingActionButton(
-          //   onPressed: _incrementCounter,
-          //   tooltip: 'Increment',
-          //   child: const Icon(Icons.add),
-          // )
-        ] // This trailing comma makes auto-formatting nicer for build methods.
+        ], // This trailing comma makes auto-formatting nicer for build methods.
     ));
   }
 }
