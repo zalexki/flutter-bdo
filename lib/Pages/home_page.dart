@@ -1,4 +1,3 @@
-import 'package:bdotimers/Factory/timer_factory.dart';
 import 'package:bdotimers/Pages/settings_page.dart';
 import 'package:bdotimers/Pages/timers_page.dart';
 import 'package:flutter/material.dart';
@@ -20,35 +19,7 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 class _MyHomePageState extends State<MyHomePage> {
-  // List<Card> dynamicList = [];
   int selectedIndex = 0;
-
-  // // void onAddTimerClick()
-  // // {
-  // //   var protoCard = TimerFactory.createTimerCard();
-
-  // //   setState(() {
-  // //     dynamicList.add(protoCard);
-  // //   });
-  // }
-
-  // Widget _getFloatingBtn(BuildContext context)
-  // {
-  //   if (selectedIndex == 0) {
-  //     return Container();
-
-  //     return Container(
-  //         height: 50,
-  //         width: 150,
-  //         margin: const EdgeInsets.all(20),
-  //         child: FloatingActionButton(
-  //           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-  //           onPressed: onAddTimerClick, child: const Center(child: Icon(Icons.add))),
-  //     );
-  //   } else {
-  //     return Container();
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {

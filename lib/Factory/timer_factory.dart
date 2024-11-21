@@ -3,19 +3,27 @@ import 'package:flutter/material.dart';
 
 class TimerFactory
 {
-  static Card createTimerCard()
+  void RemoveTimer(String)
   {
-    return const Card(
-      margin: EdgeInsets.all(50),
+
+  }
+  static Card createTimerCard(String uuid)
+  {
+
+  
+    return Card(
+      margin: const EdgeInsets.all(50),
       color: Colors.amber,
       child: Stack(
         children: [
-          CloseButton(),
+          const CloseButton(
+            // onPressed: RemoveTimer(uuid),
+          ),
           Padding(
-            padding: EdgeInsets.all(50),
+            padding: const EdgeInsets.all(50),
             child: Column(
               children: [
-                TimerCard()
+                TimerCard(uuid)
               ],
             )
           )

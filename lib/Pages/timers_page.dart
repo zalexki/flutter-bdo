@@ -1,4 +1,3 @@
-import 'package:bdotimers/Factory/timer_factory.dart';
 import 'package:bdotimers/main.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,18 +10,14 @@ class TimersPage extends StatefulWidget {
 }
 
 class _TimersPage extends State<TimersPage> {
-  List<Card> dynamicList = [];
-
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
      
-    void onAddTimerClick()
-    {
-      var protoCard = TimerFactory.createTimerCard();
-
+    void onAddTimerClick() {
       setState(() {
-        appState.addInList(protoCard);
+        var seconds = appState.timersMap.length + 20;
+        appState.addInList(seconds);
       });
     }
 
@@ -43,7 +38,9 @@ class _TimersPage extends State<TimersPage> {
       body: ListView(
         children: [
           Wrap(
-            children: appState.dynamicList
+            children: [for (var e in appState.timersMap.values)
+              e.card
+            ]
           ),
         ]
       )
