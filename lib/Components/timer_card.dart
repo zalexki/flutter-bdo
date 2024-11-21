@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:math';
-import 'dart:developer';
 import 'package:flutter/material.dart';
 
 class TimerCard extends StatefulWidget {
@@ -20,18 +18,27 @@ class _TimerCard extends State<TimerCard> {
     super.dispose();
   }
 
-  void createNewCountdown()
-  {
+  void autoCleanAfterXSeconds(int secondsToWait) {
+    _timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
+      if (timer.tick >= secondsToWait)
+      {
+        _timer.cancel();
+      }
+    });
+  }
+
+  void createNewCountdown() {
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer timer) {
       if (_counter <= 0) {
-        setState(() {
-          _timer.cancel();
-        });
+        setState(() { _timer.cancel(); });
       } else {
-        setState(() {
-          _counter--;
+        setState(() { 
+          _counter--; 
+          // autoCleanAfterXSeconds(10); 
         });
       }
+
+      print(_counter);
     });
   }
 
